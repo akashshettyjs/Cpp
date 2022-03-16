@@ -1,0 +1,37 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int num = 0;
+timed_mutex m;
+
+void fun1()
+{
+    m.lock();
+    cout<<"\n fun1 ================================================================= \n";
+    this_thread::sleep_for(chrono::seconds(4));
+    m.unlock();
+}
+
+void fun2()
+{
+    if(m.try_lock_for(chrono::seconds(3)))
+    {
+        cout<<"\n fun2 ================================================================= \n";
+        m.unlock();
+    }
+    else
+        cout<<"couldnot own mutex";
+
+}
+
+int main()
+{
+    std::thread t1(fun1);
+    std::thread t2(fun2);
+
+    t1.join();
+    t2.join();
+    return 0;
+}
+

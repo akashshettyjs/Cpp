@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+
+class Base
+{
+
+public:
+    int *p = &y;
+    int x, y;
+    Base(int a = 0,  int b = 0) : x(a), y(b)
+    {
+
+    }
+
+    Base(const Base& rhs)
+    {
+        if(this != &rhs)
+        {
+            *p = *rhs.p;
+            x = rhs.x;
+            y = rhs.y;
+        }
+    }
+
+    Base& operator = (const Base& rhs)
+    {
+        if(this != &rhs)
+            *p = *rhs.p;
+        return *this;
+    }
+
+    void setP(int arg)
+    {
+        *p = arg;
+    }
+
+    void show()
+    {
+        cout<<"\nP :"<<*p;
+    }
+};
+
+
+int main()
+{
+    Base b1(1,2);
+    Base b2 = b1;
+    b1.setP(5);
+    b1.show();
+    b2.show();
+    return 0;
+}
+

@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int num = 0;
+mutex m;
+
+void fun1()
+{
+    if(1)
+    {
+        lock_guard<mutex> guard_name(m);
+        cout<<"\ntry_lock inside block : "<<m.try_lock();
+    }
+    cout<<"\ntry_lock outside block : "<<m.try_lock();
+}
+
+int main()
+{
+    std::thread t1(fun1);
+
+    t1.join();
+    return 0;
+}
+

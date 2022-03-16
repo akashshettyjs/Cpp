@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Dollar
+{
+    int m_dollar;
+public:
+    Dollar(int ar_dollar) :
+        m_dollar(ar_dollar)
+    {  }
+    
+    int show()
+    {
+        cout<<"\n m_dollar :"<<m_dollar;
+    }
+
+};
+
+class Rupee
+{
+    int m_rupee;
+public:
+    Rupee(int ar_rupee) :
+        m_rupee(ar_rupee)
+    {  }
+
+    operator Dollar ()
+    {
+        return Dollar(m_rupee / 70);
+    }
+
+    int show()
+    {
+        cout<<"\n m_rupee :"<<m_rupee;
+    }
+};
+
+int main()
+{
+    Dollar d(10);
+    Rupee r(1000);
+
+    d = r;
+
+    d.show();
+    r.show();
+    return 0;
+}
+

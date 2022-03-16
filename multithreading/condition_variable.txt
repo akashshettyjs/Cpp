@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int fun1or2 = 1;
+mutex m;
+condition_variable cv;
+
+void fun1()
+{
+    unique_lock<mutex> u_lock(m, defer_lock);
+    cv.wait(u_lock, []{return fun1or2 == 1;});
+    fun1or2++;
+    cout<<"\n  fun1";
+}
+
+void fun2()
+{
+    unique_lock<mutex> u_lock(m, defer_lock);
+    cv.wait(u_lock, []{return fun1or2 == 2;});
+    cout<<"\n  fun2";
+    fun1or2 = 2;
+    cv.notify_all();
+}
+
+int main()
+{
+    std::thread t1(fun1);
+    std::thread t2(fun2);
+
+    t1.join();
+    t2.join();
+    return 0;
+}
+

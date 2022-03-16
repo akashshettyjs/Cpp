@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+
+class Base
+{
+
+public:
+    int x, y;
+    Base(int a = 0,  int b = 0) : x(a), y(b)
+    {
+
+    }
+
+    Base operator + (const Base& rhs)
+    {
+        Base  temp(x + rhs.x, y + rhs.y);
+        return temp;
+    }
+
+    Base operator + ()
+    {
+        Base  temp(x + 1, y + 1);
+        return temp;
+    }
+
+    void show()
+    {
+        cout<<"\nx :"<<x <<"\n y :"<<y<<"\n";
+    }
+};
+
+
+
+int main()
+{
+    Base b1(1,2);
+    Base b2(3,2);
+
+    Base b3 = b1 + b2;
+    b3.show();
+    return 0;
+}
+

@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void fun1()
+{
+    cout<<"\n  fun1";
+}
+
+
+int main()
+{
+    auto value  = async(std::launch::deferred, fun1);
+    this_thread::sleep_for(chrono::seconds(1));
+    cout<<" \n slept for 1 sec";
+    value.get();
+    cout<<"\n value.get() : ";
+    return 0;
+}
+

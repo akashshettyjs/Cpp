@@ -1,0 +1,60 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+
+class Base
+{
+public:
+    Base() {
+        cout<<"\n Base  class created :";
+    }
+
+    virtual ~Base() {
+        cout<<"\n Base  class destroyed :";
+    }
+    virtual void fun()
+    {
+        cout<<"\n  Base";
+    }
+
+    void show()
+    {
+        cout<<"\n  Base";
+    }
+};
+
+class Derived : public Base
+{
+public:
+    Derived() {
+        cout<<"\n Derived  class created :";
+    }
+    ~Derived() {
+        cout<<"\n Derived  class destroyed :";
+    }
+    void fun()
+    {
+        cout<<"\n  Derived";
+    }
+
+    void show()
+    {
+        cout<<"\n  Derived";
+    }
+};
+
+int main()
+{
+    Base * base = new Derived;
+    base = dynamic_cast<Derived*>(base);
+    base = dynamic_cast<Base*>(base);
+
+
+    if(!base)
+        cout<<"\n nullptr";
+
+    delete  base;
+    return 0;
+}
+
