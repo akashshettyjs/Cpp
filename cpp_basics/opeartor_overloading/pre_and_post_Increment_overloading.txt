@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Test
+{
+    int m_test;
+public:
+
+    Test(int arg) : m_test(arg)
+    {
+
+    }
+    void show()
+    {
+        cout<<"\n m_test : "<<m_test;
+    }
+
+    Test& operator ++()
+    {
+        m_test++;
+        return *this;
+    }
+
+    Test operator ++ (int dummy)
+    {
+        Test temp  = *this;
+        ++(*this);
+        return temp;
+    }
+};
+
+int main()
+{
+    Test t(10);
+    (++t).show();
+    t.show();
+    (t++).show();
+    t.show();
+    return 0;
+}
+

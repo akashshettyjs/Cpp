@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Test
+{
+    int m_test;
+public:
+
+    void* operator new (size_t size)
+    {
+        cout<<"\noverload new size :"<<size;
+        void *p = malloc(size);
+        return p;
+    }
+
+    void operator delete(void* p)
+    {
+        cout<<"\noverload delete :";
+        free(p);
+    }
+};
+
+int main()
+{
+    Test* t = new Test();
+    delete t;
+    return 0;
+}
+
