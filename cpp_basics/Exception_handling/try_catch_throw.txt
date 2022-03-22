@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int result;
+
+    int num = 5;
+    int den = 0;
+
+    try
+    {
+        if(den == 0)
+            throw den;
+
+        cout<<"result :"<<num/den;
+    }
+
+    catch (int arg)
+    {
+        cout<<"undefined output";
+    }
+
+    return 0;
+}
+

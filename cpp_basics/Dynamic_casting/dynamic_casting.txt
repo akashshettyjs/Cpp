@@ -1,0 +1,68 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Base
+{
+    int m_private_base;
+
+public:
+    int m_public_base;
+
+    virtual void virtual_fun()
+    {
+        cout<<"\n  Base virtual_fun ";
+    }
+
+    void base_fun()
+    {
+        cout<<"\n base_fun ";
+    }
+
+};
+
+class Derived : public Base
+{
+    int m_private_derived;
+
+public:
+    int m_public_derived;
+
+    void derived_fun()
+    {
+        cout<<"\n derived_fun ";
+    }
+
+    void virtual_fun()
+    {
+        cout<<"\n  Derived virtual_fun ";
+    }
+};
+
+class Other_Derived : public Base
+{
+
+public:
+
+    void Other_Derived_fun()
+    {
+        cout<<"\n Other_Derived_fun ";
+    }
+
+};
+
+int main()
+{
+    int dummy = 0;
+    Base * base =  new Derived;
+
+    base = dynamic_cast<Derived*>(base);
+
+    base = dynamic_cast<Base*>(base);
+
+    if(dynamic_cast<Other_Derived*>(base))
+        dummy = 1;
+    else
+        dummy = 0;
+    return 0;
+}
+
